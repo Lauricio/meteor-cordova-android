@@ -1,5 +1,5 @@
 Package.describe({
-  summary: "Cordova 3.0.0 for Android with core plugins"
+  summary: "Cordova 3.3.0 for Android with core plugins"
 });
 
 Package.on_use(function (api) {
