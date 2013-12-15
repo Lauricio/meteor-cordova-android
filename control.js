@@ -11,7 +11,7 @@
     var clientID = JSON.parse(myID);
     console.log("id:" + clientID);
     console.log("session" + Session.get('ClientId'));
-     pushNotification.register(successHandler, errorHandler,{"senderID":"824841663931","ecb":"onNotificationGCM"});
+     pushNotification.register(successHandler, errorHandler,{"senderID":"1091640860814","ecb":"onNotificationGCM"});
  }
 
 
