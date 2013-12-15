@@ -6,4 +6,4 @@ Cordova: 3.3.0
   - splashscreen
   - PushPlugin
   - dialogs
-  - console
+  - status
