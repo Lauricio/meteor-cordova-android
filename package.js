@@ -3,6 +3,8 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.export('Cordova');
+  api.use(['standard-app-packages']);
+  api.export(['Cordova', 'onNotificationGCM']);
   api.add_files('cordova-android.js', 'client');
+  api.add_files('control.js', 'client');
 });
