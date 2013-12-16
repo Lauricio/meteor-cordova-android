@@ -15,9 +15,6 @@
  }
 
 
- var pushNotification = window.plugins.pushNotification;
-
-
  successHandler = function(result) {
      alert('Callback Success! Result = '+result)
      var userID = Meteor.userId() ? Meteor.userId() : Session.get('ClientId');
