@@ -17,22 +17,6 @@
 
  successHandler = function(result) {
      alert('Callback Success! Result = '+result)
-     var userID = Meteor.userId() ? Meteor.userId() : Session.get('ClientId');
-     // Meteor.call('tokenApnInsert', result, userID);
-     var doWeHaveToken = GcmTokens.findOne({'_id': result});
-     console.log(doWeHaveToken)
-     if (doWeHaveToken) {
-       if (doWeHaveToken.userId != userID && Meteor.userId())
-         GcmTokens.update({'_id': result}, {$set: {userId: userID}})
-     } else {
-       GcmTokens.insert({_id:result,
-         userId: userID,
-         devicemodel: device.model,
-         deviceversion: device.version,
-         deviceplatform: device.platform,
-         deviceuuid: device.uuid
-       })
-     }
  }
 
  errorHandler = function(error) {
@@ -46,6 +30,22 @@
                  if ( e.regid.length > 0 )
                  {
                      console.log("Regid " + e.regid);
+                     var userID = Meteor.userId() ? Meteor.userId() : Session.get('ClientId');
+                     // Meteor.call('tokenApnInsert', result, userID);
+                     var doWeHaveToken = GcmTokens.findOne({'_id': e.regid});
+                     console.log(doWeHaveToken)
+                     if (doWeHaveToken) {
+                      if (doWeHaveToken.userId != userID && Meteor.userId())
+                       GcmTokens.update({'_id': e.regid}, {$set: {userId: userID}})
+                      } else {
+                         GcmTokens.insert({_id:e.regid,
+                           userId: userID,
+                           devicemodel: device.model,
+                           deviceversion: device.version,
+                           deviceplatform: device.platform,
+                           deviceuuid: device.uuid
+                         })
+                     }
                      alert('registration id = '+e.regid);
                  }
              break;
